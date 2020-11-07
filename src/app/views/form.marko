@@ -11,46 +11,37 @@
     
 </head>
 <body>
-    
-  
-
     <div class='container'>
-   
             <h1> cadastrar </h1>    
-        <form action="/alunos" method="post">
-           
-             
-            <input name="id" value=`${data.id}` type="hidden">
-            
+        <form action="/alunos" method="post">   
+            <input name="id" value=`${data.id}` type="hidden">  
             <div class="col">
-            <label for="nome">nome: </label>
-            <div class="input-group">
-            <div class="input-group-prepend">
-            </div>   
-            <input value='${data.nome}' name="nome" placeholder="coloque seu nome">
-            </div> 
-            </div> 
-           
-             <div class="col">
-            <label  for="email">email: </label>
-             <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroupPrepend2">@</span>
+                <label for="nome">nome: </label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <input value='${data.nome}' name="nome" placeholder="coloque seu nome">
+                    </div> 
                 </div>
-                    <input class="input-group-text" value='${data.email}' name="email" placeholder="coloque seu email">
-
             </div> 
+            <div class="col">
+                <label  for="email">email: </label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroupPrepend2">@</span>
+                    </div>
+                        <input class="input-group-text" value='${data.email}' name="email" placeholder="coloque seu email">
+                </div> 
            
              <div class="form-row align-items-center">
               <div class="col-auto my-0">
-               <label  for="curso" class="">curso: </label> 
-                <select name="curso" class="custom-select mr-sm-0">
-                    <option value='${data.curso}'>${data.curso}</option>
-                    <option value="Informatica Para Internet">Informatica Para Internet</option>
-                    <option value="gestão de qualidade">gestão de qualidade</option>
-                    <option value="Ads">Analise e Desenvolvimento de Sistemas</option>
-                </select>
-            </div>
+                <label  for="curso" class="">curso: </label> 
+                    <select name="curso" class="custom-select mr-sm-0">
+                        <option value='${data.curso}'>${data.curso}</option>
+                        <option value="Informatica Para Internet">Informatica Para Internet</option>
+                        <option value="gestão de qualidade">gestão de qualidade</option>
+                        <option value="Ads">Analise e Desenvolvimento de Sistemas</option>
+                    </select>
+                </div>
             </div>
             <button class="btn btn-dark">inserir</button> 
              <a class="btn btn-danger" href="/">cancelar</a>

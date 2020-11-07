@@ -24,6 +24,7 @@ app.use(flash());
 app.use('/static', express.static('node_modules/bootstrap'));
 app.use('/bootstrap', express.static('node_modules/bootstrap'));
 app.use(markoExpress());
+//para tratar o corpo das requisições
 app.use(bodyParser.urlencoded({
     extended: true
 }));
@@ -40,12 +41,10 @@ app.get('/', (req, res)=>{
   
     aluno.listar().then((results) =>{
         response.results = results;
-        //console.log(results)
         res.marko(require('./src/app/views/alunos.marko'), response);
 
    }).catch(err => {
         req.flash(' erro inesperado')
-        //res.redirect('/erro')
         res.marko(require('./src/app/views/alunos.marko'), response );
         console.log(err)
    });
@@ -76,10 +75,6 @@ app.post('/alunos', function(req, res){
         });
     }
     
-    
-   
-   
-
     });
 
 app.get('/alunos/delete/:id',(req, res)=>{
@@ -94,8 +89,6 @@ app.get('/alunos/delete/:id',(req, res)=>{
     })
    
 app.get('/alunos/editar/:id', (req, res)=>{
-    
-   
     aluno.find(req.params.id).then((results)=>{
         if(results.length > 0 ){
         
@@ -113,101 +106,10 @@ app.get('/alunos/editar/:id', (req, res)=>{
         console.log(err)
 
     });
-    
-   
-})
-/*
-    const mysql = require('mysql2');
- 
-    // create the connection to database
-    const connection = mysql.createConnection({
-      host: 'localhost',
-      user: 'root',
-      password:'85322487-+Jj',
-      database: 'db_curso'
-    });
      
-    // simple query
-    connection.query(
-      'SELECT nome,curso FROM alunos',
-      function(err, results, fields) {
-        console.log(results); // results contains rows returned by server
-       // console.log(fields); // fields contains extra meta data about results, if available
-      }
-    );
-     */
-   
+});
 
-
-
-
-
-
-app.listen(3000, '0.0.0.0',()=>{
+app.listen(3001, '0.0.0.0',()=>{
     console.log('servidor rodando na porta 3000')
 });
 
-
-//module.exports = alunos;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//primeira aula sem usar express
-/*
-const http = require ('http');
-const fs = require('fs');
-
-
-const servidor  = (req, res)=>{
-    let html = '';
-    if(req.url == '/'){
-        html = fs.readFileSync('index.html');
-    }
-    if(req.url == '/livros'){
-        html = fs.readFileSync('main.jsnpm');
-    }
-
-    res.end(html)
-}
-
-server = http.createServer(servidor);
-console.log('rodando na porta 3000')
-server.listen(3000);*/
